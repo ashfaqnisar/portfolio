@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 const About = () => {
+  const description = "Just a typical Computer Geek"
   return (
     <>
       <Head>
@@ -16,7 +17,11 @@ const About = () => {
               About Me
             </h2>
           </div>
-          <div>Just a typical Computer Geek</div>
+          <div>
+            <h6 className={"text-medium"}>
+              {description}
+            <h6/>
+          </div>
         </div>
       </main>
     </>
