@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 const About = () => {
-  const description = "Just a typical Computer Geek"
+  const description = "Just a typical Computer Geek";
   return (
     <>
       <Head>
