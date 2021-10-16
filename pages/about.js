@@ -20,7 +20,7 @@ const About = () => {
           <div>
             <h6 className={"text-medium"}>
               {description}
-            <h6/>
+            </h6>
           </div>
         </div>
       </main>
