@@ -66,7 +66,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={inter.className}>
+          <h1 className={"text-5xl font-semibold"}>Templates</h1>
+          <h2 className={inter.className}  style={{fontSize:"3rem"}}>
             Templates <span>-&gt;</span>
           </h2>
           <p className={inter.className}>Explore the Next.js 13 playground.</p>
