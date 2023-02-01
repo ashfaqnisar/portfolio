@@ -1,22 +1,18 @@
-import './globals.css'
-import {ReactNode} from "react";
+import "./globals.css";
+import { ReactNode } from "react";
 import { Inter, Roboto_Mono } from "@next/font/google";
 
 const inter = Inter({
-  variable: '--font-inter',
-  display: 'optional'
+  variable: "--font-inter",
+  display: "optional"
 });
 
 const roboto_mono = Roboto_Mono({
-  variable: '--font-roboto-mono',
-  display: 'optional'
+  variable: "--font-roboto-mono",
+  display: "optional"
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
       {/*
@@ -25,5 +21,5 @@ export default function RootLayout({
       */}
       <body>{children}</body>
     </html>
-  )
+  );
 }

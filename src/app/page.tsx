@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
-
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -53,9 +52,7 @@ export default function Home() {
           <h2>
             Docs <span>-&gt;</span>
           </h2>
-          <p>
-            Find in-depth information about Next.js features and API.
-          </p>
+          <p>Find in-depth information about Next.js features and API.</p>
         </a>
 
         <a
@@ -64,22 +61,21 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={"text-lg font-semibold"}>Templates <span>-&gt;</span></h2>
+          <h2 className={"text-lg font-semibold"}>
+            Templates <span>-&gt;</span>
+          </h2>
           <p>Explore the Next.js 13 playground.</p>
         </a>
-
         <a
           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className={"text-rose-700"}>
+          <h2 className={"text-rose-700 hover:text-red-300"}>
             Deploy <span>-&gt;</span>
           </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
+          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
         </a>
       </div>
     </main>
