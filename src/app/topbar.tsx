@@ -5,14 +5,13 @@ import { usePathname } from "next/navigation";
 
 const navigation = [
   {
+    name: "Home",
+    href: "/"
+  },
+  {
     name: "Projects",
     href: "/projects"
   },
-  {
-    name: "About",
-    href: "/about"
-  },
-
   {
     name: "Gallery",
     href: "/gallery"
@@ -39,11 +38,11 @@ const Topbar: React.FC = () => {
             AN
           </Link>
           <nav className="flex grow items-center">
-            <ul className="flex grow flex-wrap items-center justify-end gap-4">
+            <ul className="flex grow flex-wrap items-center justify-center gap-4 sm:justify-end">
               {navigation.map((item) => (
                 <li className="" key={item.href}>
                   <Link
-                    className={`flex items-center px-3 py-2 text-sm duration-200 hover:text-zinc-50 sm:text-base
+                    className={`flex items-center py-2 px-2 text-sm duration-200 hover:text-zinc-50 sm:px-3 sm:text-base
                     ${pathname === item.href ? "font-medium text-zinc-50" : "text-zinc-400"}`}
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
