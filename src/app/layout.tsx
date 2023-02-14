@@ -1,6 +1,7 @@
 import "./globals.css";
 import { ReactNode } from "react";
 import { Inter, Roboto_Mono } from "@next/font/google";
+import TopBar from "./topbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,7 +20,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <body>{children}</body>
+
+      <body>
+        <TopBar />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
