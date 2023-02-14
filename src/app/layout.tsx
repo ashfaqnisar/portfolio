@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
 
-      <body>
+      <body className={"bg-gray-100 dark:bg-black/60"}>
         <TopBar />
         <main>{children}</main>
       </body>

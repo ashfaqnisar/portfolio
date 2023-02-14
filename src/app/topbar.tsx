@@ -27,7 +27,7 @@ const navigation = [
 const Topbar: React.FC = () => {
   const pathname = usePathname();
   return (
-    <header className="bh-zinc-900/50 top-0 z-30 w-full px-4 backdrop-blur sm:fixed">
+    <header className="top-0 z-30 w-full px-4 backdrop-blur sm:fixed">
       <div className="container mx-auto">
         <div className="flex flex-col items-center justify-between gap-2 pt-6 sm:h-20 sm:flex-row sm:pt-0">
           <Link
