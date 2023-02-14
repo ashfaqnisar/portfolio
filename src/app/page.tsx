@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { cloneElement, ReactElement } from "react";
 
 import {
   AiFillLinkedin,
@@ -10,7 +11,6 @@ import {
 } from "react-icons/ai";
 import { SiCodersrank, SiLeetcode } from "react-icons/si";
 import { FaStackOverflow } from "react-icons/fa";
-import { cloneElement } from "react";
 
 const socialLinks = [
   {
@@ -53,7 +53,7 @@ const socialLinks = [
     icon: <AiOutlineTwitter />,
     link: "https://twitter.com/ashfaqnisar00"
   }
-];
+] satisfies { name: string; icon: ReactElement; link: string }[];
 
 const Page = () => {
   return (
