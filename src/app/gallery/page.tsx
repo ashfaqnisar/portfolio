@@ -1,53 +1,193 @@
-import Link from "next/link";
-import ProjectCard from "@/app/projects/components/ProjectCard";
+import Image from "next/image";
+const events = [
+  {
+    id: "devfest_2022",
+    title: "Dev Fest 2022",
+    description:
+      "Had an enjoyable time socializing and gaining insights on cutting-edge technical advancements.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_north/v1676453155/devfest_2022/1.jpg"
+    ]
+  },
+  {
+    id: "vjit_2020",
+    title: "VJIT Hackathon 2020",
+    description: "Organized & Mentored the hackathon participants.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/vjit_2020/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/vjit_2020/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/vjit_2020/3.jpg"
+    ]
+  },
+  {
+    id: "cloud_study_jam_1",
+    title: "Cloud Study Jam",
+    description: "Conducted a workshop on Google Cloud",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/cloud_study_jam_1/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/cloud_study_jam_1/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/cloud_study_jam_1/3.jpg"
+    ]
+  },
+  {
+    id: "devfest_2019",
+    title: "Devfest 2019",
+    description: "Enjoyed meeting people & learning about various technical stuff.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/devfest_2019/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/devfest_2019/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/devfest_2019/3.jpg"
+    ]
+  },
+  {
+    id: "dsc_summit",
+    title: "DSC Leads India Summit",
+    description:
+      "Had a great time at the event with other leads and tech enthusiasts from all over the country!",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_faces/v1676451059/dsc_summit/1.jpg"
+    ]
+  },
+  {
+    id: "jetbrains_day_2019",
+    title: "Jetbrains Day 2019",
+    description: "Loved the whole thing and had a lot of fun at the event!",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_north/jetbrains_day_2019/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/jetbrains_day_2019/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/jetbrains_day_2019/3.jpg"
+    ]
+  },
+  {
+    id: "ibm",
+    title: "IBM Hack 2019 Challenge",
+    description: "Won the Best UI/UX Award in IBM Hack 2019.",
+    images: [
+      // "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/ibm/1.jpg"
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/ibm/2.jpg"
+      // "https://res.cloudinary.com/dfq0wyslj/image/upload/w_500,h_425,c_fill,g_auto/ibm/3.jpg"
+    ]
+  },
+  {
+    id: "helping_hands_hackathon",
+    title: "Helping Hands Hackathon",
+    description: "Participated in this hackathon to support the orphanages",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_faces/helping_hands_hackathon/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/helping_hands_hackathon/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/helping_hands_hackathon/3.jpg"
+    ]
+  },
+  {
+    id: "sih_2019",
+    title: "Smart India Hackathon 2019",
+    description: "Runner-Ups for building an Energy Management System.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill/v1633365337/sih_2019/1.jpg"
+    ]
+  },
+  {
+    id: "ai_club",
+    title: "AI Club Inauguration",
+    description: "Initiated and organized the AI Club in the college.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_faces/v1633256101/ai_club/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/ai_club/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/ai_club/3.jpg"
+    ]
+  },
+  {
+    id: "workshop_for_freshers",
+    title: "Workshop for freshers.",
+    description:
+      "Conducted the workshop to help out freshers and explain different paths & technologies.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/workshop_for_freshers/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/workshop_for_freshers/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/workshop_for_freshers/3.jpg"
+    ]
+  },
+  {
+    id: "nasa_2018",
+    title: "Nasa Space Apps Hackathon 2018",
+    description: "Won first place for building a Mars-like Environment Game.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/nasa_2018/1.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/nasa_2018/2.jpg",
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_auto/nasa_2018/3.jpg"
+    ]
+  },
+  {
+    id: "excite",
+    title: "Excite 2018",
+    description: "A 60-Day Workshop on Product Development.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,g_faces/excite/1.jpg"
+    ]
+  },
+  {
+    id: "smart_city_hackathon",
+    title: "Smart City Hackathon 2018",
+    description: "Won the Best Marketing Award for the application.",
+    images: [
+      "https://res.cloudinary.com/dfq0wyslj/image/upload/w_1000,h_800,c_fill,f_auto,g_faces,x_0/smart_city_hackathon/1.jpg"
+      // "https://res.cloudinary.com/dfq0wyslj/image/upload/smart_city_hackathon/2.jpg",
+      // "https://res.cloudinary.com/dfq0wyslj/image/upload/smart_city_hackathon/3.jpg"
+    ]
+  }
+];
+
+interface EventCardProps {
+  event: {
+    id: string;
+    title: string;
+    description?: string;
+    images: string[];
+  };
+}
+
+const EventCard = ({ event }: EventCardProps) => {
+  const { images = [] } = event;
+  return (
+    <div className={"group rounded-xl shadow-md ring-1 ring-neutral-800"}>
+      <Image
+        key={images[0]}
+        src={images[0]}
+        alt={event.title}
+        width={500}
+        height={400}
+        className={"w-full rounded-t-xl grayscale duration-500 group-hover:grayscale-0"}
+      />
+      <div className={"p-4"}>
+        <h1 className={"text-sm font-bold duration-150 sm:text-base 2xl:text-lg"}>{event.title}</h1>
+        <p
+          className={
+            "text-xs text-gray-600 duration-150 dark:text-gray-400  sm:text-sm 2xl:text-base"
+          }
+        >
+          {event.description}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const Page = () => {
   return (
-    <div className="flex flex-col gap-8 pb-8 md:gap-16 md:pb-16 xl:pb-24">
-      <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center justify-center px-8 sm:mt-0 sm:min-h-screen sm:px-0">
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <Link
-            href="https://github.com/chronark/envshare"
-            className="relative overflow-hidden rounded-full py-1.5 px-4 text-sm leading-6 text-zinc-400 ring-1 ring-zinc-100/10 duration-150 hover:ring-zinc-100/30"
-          >
-            EnvShare is Open Source on{" "}
-            <span className="font-semibold text-zinc-200">
-              GitHub <span aria-hidden="true">&rarr;</span>
-            </span>
-          </Link>
+    <div className={"w-full px-4 pb-8 sm:pt-16"}>
+      <div className={"md:container md:mx-auto"}>
+        <h1
+          className={
+            "py-4 text-center text-lg font-bold tracking-tight duration-150 sm:text-left sm:text-xl md:text-2xl"
+          }
+        >
+          Gallery
+        </h1>
+        <div className={"grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
         </div>
-        <div>
-          <h1 className="bg-gradient-to-t from-zinc-100/50 to-white bg-clip-text py-4 text-center text-5xl font-bold tracking-tight text-transparent sm:text-7xl">
-            Share Environment Variables Securely
-          </h1>
-          <p className="mt-6 leading-5 text-zinc-600 sm:text-center">
-            Your document is encrypted in your browser before being stored for a limited period of
-            time and read operations. Unencrypted data never leaves your browser.
-          </p>
-          <div className="mx-auto mt-8 flex flex-col justify-center gap-4 sm:max-w-lg sm:flex-row ">
-            <Link
-              href="/deploy"
-              className="hover:drop-shadow-cta inline-block space-x-2 rounded px-4 py-1.5 text-base font-semibold leading-7 text-white ring-1 ring-zinc-600  duration-150 hover:bg-white hover:text-zinc-900 hover:ring-white sm:w-1/2 sm:text-center md:py-2"
-            >
-              Deploy
-            </Link>
-            <Link
-              href="/share"
-              className="hover:drop-shadow-cta inline-block space-x-2 rounded bg-zinc-50  px-4 py-1.5 text-base font-semibold leading-7 text-zinc-800 ring-1 ring-transparent   transition-all duration-150 hover:bg-zinc-900/20 hover:text-zinc-100 hover:ring-zinc-600/80  sm:w-1/2 sm:text-center md:py-2"
-            >
-              <span>Share</span>
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-      <h2 className="py-4 text-center text-3xl font-bold text-zinc-300 ">
-        Used and trusted by a growing community
-      </h2>
-      <div className={"grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>
-        {Array.from({ length: 35 }).map((value, index) => (
-          <ProjectCard key={index} />
-        ))}
       </div>
     </div>
   );

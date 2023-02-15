@@ -76,7 +76,7 @@ const Page = () => {
               <Link href={item.link} key={item.name} target={"_blank"} aria-label={item.name}>
                 {cloneElement(item.icon, {
                   size: 25,
-                  className: "text-neutral-400 hover:text-white duration-150"
+                  className: "text-neutral-300 hover:text-white duration-150"
                 })}
               </Link>
             ))}
