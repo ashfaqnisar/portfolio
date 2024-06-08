@@ -180,7 +180,7 @@ const EventCard = ({ event }: EventCardProps) => {
     <div className={"group rounded-xl shadow-md ring-1 ring-neutral-800"}>
       <Image
         key={images[0]}
-        src={images[0]}
+        src={images[0]!}
         alt={event.title}
         width={500}
         height={400}
