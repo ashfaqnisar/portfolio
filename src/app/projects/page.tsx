@@ -99,8 +99,7 @@ const Page = () => {
         <h1
           className={
             "py-4 text-center text-lg font-bold tracking-tight duration-150 sm:text-left sm:text-xl md:text-2xl"
-          }
-        >
+          }>
           Projects
         </h1>
         <div className={"grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}>

@@ -1,8 +1,12 @@
 import "./globals.css";
-import { ReactNode } from "react";
+
+import { type ReactNode } from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
+
 import { Analytics } from "@vercel/analytics/react";
+
 import TopBar from "./topbar";
+
 import type { Metadata } from "next";
 
 const inter = Inter({
