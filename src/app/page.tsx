@@ -1,6 +1,7 @@
+import React, { cloneElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { cloneElement, ReactElement } from "react";
+
 import {
   AiFillLinkedin,
   AiFillYoutube,
@@ -8,8 +9,10 @@ import {
   AiOutlineMedium,
   AiOutlineTwitter
 } from "react-icons/ai";
-import { SiCodersrank, SiLeetcode } from "react-icons/si";
 import { FaStackOverflow } from "react-icons/fa";
+import { SiCodersrank, SiLeetcode } from "react-icons/si";
+
+import type { ReactElement } from "react";
 
 interface SocialLink {
   name: string;
@@ -84,8 +87,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ name, description, email, r
             key={item.name}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={item.name}
-          >
+            aria-label={item.name}>
             {cloneElement(item.icon, {
               size: 25,
               className: "text-neutral-300 hover:text-white duration-150"
@@ -96,15 +98,13 @@ const IntroSection: React.FC<IntroSectionProps> = ({ name, description, email, r
       <div className="mt-4 flex flex-col justify-center gap-4 sm:max-w-lg sm:flex-row md:justify-start">
         <Link
           href={`mailto:${email}`}
-          className="hover:drop-shadow-cta inline-block space-x-2 rounded px-4 py-1.5 text-base font-semibold leading-7 text-white ring-1 ring-zinc-600 duration-150 hover:bg-white hover:text-zinc-900 hover:ring-white sm:w-1/3 sm:text-center"
-        >
+          className="hover:drop-shadow-cta inline-block space-x-2 rounded px-4 py-1.5 text-base font-semibold leading-7 text-white ring-1 ring-zinc-600 duration-150 hover:bg-white hover:text-zinc-900 hover:ring-white sm:w-1/3 sm:text-center">
           Email
         </Link>
         <Link
           href={resume}
           target="_blank"
-          className="hover:drop-shadow-cta inline-block space-x-2 rounded bg-zinc-50 px-4 py-1.5 text-base font-semibold leading-7 text-zinc-800 ring-1 ring-transparent transition-all duration-150 hover:bg-zinc-900/20 hover:text-zinc-100 hover:ring-zinc-600/80 sm:w-1/3 sm:text-center"
-        >
+          className="hover:drop-shadow-cta inline-block space-x-2 rounded bg-zinc-50 px-4 py-1.5 text-base font-semibold leading-7 text-zinc-800 ring-1 ring-transparent transition-all duration-150 hover:bg-zinc-900/20 hover:text-zinc-100 hover:ring-zinc-600/80 sm:w-1/3 sm:text-center">
           <span>Resume</span>
           <span aria-hidden="true">&rarr;</span>
         </Link>
@@ -115,7 +115,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ name, description, email, r
 
 const Page = () => {
   return (
-    <>
+    <div className={"container max-w-screen-2xl"}>
       <div className="flex flex-col gap-8 px-4 pb-8 md:gap-16 md:pb-16 xl:pb-24">
         <div className="mx-auto mt-8 flex max-w-4xl flex-col-reverse items-center justify-center gap-8 sm:-mb-40 sm:mt-0 sm:min-h-screen sm:px-0 md:flex-row lg:gap-16 2xl:gap-20">
           <IntroSection
@@ -133,7 +133,7 @@ const Page = () => {
             />
           </div>
         </div>
-        <div className="mx-auto mt-12 w-full max-w-5xl shadow-md sm:mt-0 ">
+        <div className="mx-auto mt-12 w-full max-w-5xl shadow-md sm:mt-0">
           <h2 className="mb-4 text-center text-2xl font-bold text-white duration-150 2xl:text-3xl">
             About Me 🧑‍💻
           </h2>
@@ -168,7 +168,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
