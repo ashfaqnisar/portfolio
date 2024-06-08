@@ -115,7 +115,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ name, description, email, r
 
 const Page = () => {
   return (
-    <>
+    <div className={"container max-w-screen-2xl"}>
       <div className="flex flex-col gap-8 px-4 pb-8 md:gap-16 md:pb-16 xl:pb-24">
         <div className="mx-auto mt-8 flex max-w-4xl flex-col-reverse items-center justify-center gap-8 sm:-mb-40 sm:mt-0 sm:min-h-screen sm:px-0 md:flex-row lg:gap-16 2xl:gap-20">
           <IntroSection
@@ -168,7 +168,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

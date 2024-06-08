@@ -198,8 +198,8 @@ const EventCard = ({ event }: EventCardProps) => {
 
 const Page = () => {
   return (
-    <div className={"w-full px-4 pb-8 sm:pt-16"}>
-      <div className={"md:container md:mx-auto"}>
+    <div className={"container max-w-screen-2xl"}>
+      <div className={"w-full pb-8 sm:pt-16"}>
         <h1
           className={
             "py-4 text-center text-lg font-bold tracking-tight duration-150 sm:text-left sm:text-xl md:text-2xl"
