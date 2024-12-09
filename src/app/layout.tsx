@@ -6,7 +6,7 @@ import { type Metadata } from "next";
 import TopBar from "@/app/topbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           disableTransitionOnChange>
           <TopBar />
           <main>{children}</main>
-          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
