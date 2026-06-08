@@ -236,6 +236,17 @@ function isValidBugSpawn(point: Vec2, state: DevArenaState, ignoreBugId?: number
   return true;
 }
 
+function getMovementBounds(state: DevArenaState) {
+  const top = PADDING + 26;
+
+  return {
+    left: PADDING,
+    right: state.width - PADDING,
+    top,
+    bottom: state.height - PADDING
+  };
+}
+
 function getPlayableBounds(state: DevArenaState) {
   const top = PADDING + 26;
 
@@ -560,7 +571,7 @@ export function setDevArenaTarget(state: DevArenaState, x: number, y: number) {
 }
 
 function clampPlayer(state: DevArenaState) {
-  const bounds = getPlayableBounds(state);
+  const bounds = getMovementBounds(state);
   state.player.x = clamp(state.player.x, bounds.left + PLAYER_RADIUS, bounds.right - PLAYER_RADIUS);
   state.player.y = clamp(state.player.y, bounds.top + PLAYER_RADIUS, bounds.bottom - PLAYER_RADIUS);
 }
