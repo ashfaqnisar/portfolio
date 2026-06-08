@@ -15,6 +15,7 @@ import {
 import { FaStackOverflow } from "react-icons/fa";
 import { SiCodersrank, SiLeetcode } from "react-icons/si";
 
+import { DevArena } from "@/components/interactive/dev-arena";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { defaultTransition, fadeInUp, scaleIn, staggerContainer } from "@/lib/motion";
@@ -151,6 +152,8 @@ export function HomeHero() {
             </div>
           </motion.div>
         </div>
+
+        <DevArena />
       </div>
     </section>
   );

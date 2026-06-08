@@ -89,6 +89,5 @@ export const education = {
   degree: "B.Tech in Computer Science & Engineering",
   school: "Vidya Jyothi Institute of Technology",
   period: "2016 – 2020",
-  location: "Hyderabad, India",
-  cgpa: "7.74 / 10"
+  location: "Hyderabad, India"
 };

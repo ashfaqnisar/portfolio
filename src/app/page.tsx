@@ -69,7 +69,6 @@ const Page = () => {
             <p className="mt-1 text-sm text-muted-foreground">
               {education.period} · {education.location}
             </p>
-            <p className="mt-2 font-mono text-sm text-brand-light">CGPA: {education.cgpa}</p>
 
             <h3 className="mb-3 mt-6 font-semibold">Highlights</h3>
             <ul className="space-y-2">
