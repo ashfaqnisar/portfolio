@@ -1,37 +1,33 @@
 import "./globals.css";
-
-import { type ReactNode } from "react";
-import { type Metadata } from "next";
-
-import TopBar from "@/app/topbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { type ReactNode } from "react";
 
-export const metadata: Metadata = {
-  title: "Ashfaq Nisar",
-  description: "Portfolio of Ashfaq Nisar",
-  openGraph: {
-    title: "Ashfaq Nisar",
-    description: "Portfolio of Ashfaq Nisar",
-    type: "website"
-  }
-};
+import TopBar from "@/app/topbar";
+import { Footer } from "@/components/footer";
+import { JsonLd } from "@/components/json-ld";
+import { ThemeProvider } from "@/components/theme-provider";
+import { getPersonJsonLd, getProfilePageJsonLd, getWebsiteJsonLd } from "@/data/site";
+import { createRootMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
+
+export const metadata = createRootMetadata();
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("font-sans antialiased", GeistSans.variable, GeistMono.variable)}>
-        <ThemeProvider
-          defaultTheme={"dark"}
-          enableSystem
-          attribute={"class"}
-          disableTransitionOnChange>
-          <TopBar />
-          <main>{children}</main>
+      <body
+        className={cn("min-h-screen font-sans antialiased", GeistSans.variable, GeistMono.variable)}
+      >
+        <JsonLd data={[getPersonJsonLd(), getWebsiteJsonLd(), getProfilePageJsonLd()]} />
+        <ThemeProvider defaultTheme="dark" enableSystem attribute="class" disableTransitionOnChange>
+          <div className="dev-grid relative flex min-h-screen flex-col">
+            <TopBar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

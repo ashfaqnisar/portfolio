@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "ignorePatterns": [".next/**", "node_modules/**", "next-env.d.ts"],
+  "plugins": ["react", "typescript", "import", "nextjs"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn",
+    "pedantic": "off"
+  },
+  "rules": {
+    "react-in-jsx-scope": "off",
+    "no-unused-vars": "warn",
+    "import/no-unassigned-import": "off"
+  }
+}

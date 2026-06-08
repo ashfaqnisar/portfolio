@@ -1,194 +1,165 @@
-import React, { cloneElement } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
-import { clsx } from "clsx";
-import {
-  AiFillLinkedin,
-  AiFillYoutube,
-  AiOutlineGithub,
-  AiOutlineMedium,
-  AiOutlineTwitter
-} from "react-icons/ai";
-import { FaStackOverflow } from "react-icons/fa";
-import { SiCodersrank, SiLeetcode } from "react-icons/si";
-
-import type { ReactElement } from "react";
-import type { IconBaseProps, IconType } from "react-icons";
-
-interface SocialLink {
-  name: string;
-  icon: ReactElement<IconType>;
-  link: string;
-}
-
-interface IntroSectionProps {
-  name: string;
-  role: string;
-  description: string;
-  email: string;
-  resume: string;
-}
-
-const socialLinks: SocialLink[] = [
-  {
-    name: "Github",
-    icon: <AiOutlineGithub />,
-    link: "https://github.com/ashfaqnisar"
-  },
-  {
-    name: "Codersrank",
-    icon: <SiCodersrank />,
-    link: "https://profile.codersrank.io/user/ashfaqnisar"
-  },
-  {
-    name: "StackOverflow",
-    icon: <FaStackOverflow />,
-    link: "https://stackoverflow.com/users/10963451/ashfaq-nisar"
-  },
-  {
-    name: "LinkedIn",
-    icon: <AiFillLinkedin />,
-    link: "https://www.linkedin.com/in/ashfaqnisar/"
-  },
-  {
-    name: "Medium",
-    icon: <AiOutlineMedium />,
-    link: "https://ashfaqnisar.medium.com"
-  },
-  {
-    name: "Leetcode",
-    icon: <SiLeetcode />,
-    link: "https://leetcode.com/ashfaqnisar/"
-  },
-  {
-    name: "Youtube",
-    icon: <AiFillYoutube />,
-    link: "https://www.youtube.com/@ashfaqnisar"
-  },
-  {
-    name: "Twitter",
-    icon: <AiOutlineTwitter />,
-    link: "https://twitter.com/ashfaqnisar00"
-  }
-];
-
-const IntroSection: React.FC<IntroSectionProps> = ({ name, role, description, email, resume }) => {
-  return (
-    <div className="flex flex-1">
-      <div className={"flex flex-col gap-4"}>
-        <div className="space-y-2">
-          <p className={"text-base font-semibold text-muted-foreground"}>Hi👋, I&apos;m </p>
-          <h1 className="text-4xl font-bold tracking-tighter duration-150 md:text-5xl 2xl:text-6xl">
-            {name}
-          </h1>
-          <h2 className="text-2xl font-bold tracking-tighter duration-150 md:text-3xl 2xl:text-4xl">
-            {role}
-          </h2>
-          <p className="font-medium text-muted-foreground duration-150 md:text-lg 2xl:text-xl">
-            {description}
-          </p>
-        </div>
-        <div className="flex flex-row justify-center space-x-5 md:justify-start">
-          {socialLinks.map((item) => (
-            <Link
-              href={item.link}
-              key={item.name}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={item.name}>
-              {cloneElement(item.icon, {
-                size: 25,
-                className: "text-neutral-300 hover:text-white duration-150"
-              } as IconBaseProps)}
-            </Link>
-          ))}
-        </div>
-        <div className="mt-4 flex flex-col justify-center gap-4 sm:max-w-lg sm:flex-row md:justify-start">
-          <Link
-            href={`mailto:${email}`}
-            className="hover:drop-shadow-cta inline-block space-x-2 rounded px-4 py-1.5 text-base font-semibold leading-7 text-white ring-1 ring-zinc-600 duration-150 hover:bg-white hover:text-zinc-900 hover:ring-white sm:w-1/3 sm:text-center">
-            Email
-          </Link>
-          <Link
-            href={resume}
-            target="_blank"
-            className="hover:drop-shadow-cta inline-block space-x-2 rounded bg-zinc-50 px-4 py-1.5 text-base font-semibold leading-7 text-zinc-800 ring-1 ring-transparent transition-all duration-150 hover:bg-zinc-900/20 hover:text-zinc-100 hover:ring-zinc-600/80 sm:w-1/3 sm:text-center">
-            <span>Resume</span>
-            <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Intro = () => {
-  return (
-    <div className={clsx("flex h-screen")}>
-      <div className="flex w-full flex-col-reverse items-center justify-center duration-150 md:flex-row md:justify-around md:px-16">
-        <IntroSection
-          name="Ashfaq Nisar"
-          role={"Full Stack Developer"}
-          description="I'm a passionate full-stack developer with a focus on building modern, scalable, and user-friendly applications. 🪄"
-          email="ashfaqnisar00@gmail.com"
-          resume="Ashfaq_Resume.pdf"
-        />
-        <div className="flex flex-1 items-center md:justify-end">
-          <Image
-            className={"w-60 duration-150 md:w-72 lg:w-80"}
-            src="/images/profile.png"
-            alt="Picture of Ashfaq Nisar"
-            width={400}
-            height={400}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
+import { ContactForm } from "@/components/contact-form";
+import { ExperienceTimeline } from "@/components/experience-timeline";
+import { HomeHero } from "@/components/home-hero";
+import { FadeInView } from "@/components/motion/fade-in-view";
+import { SectionHeader } from "@/components/section-header";
+import { Badge } from "@/components/ui/badge";
+import { achievements, education, experience } from "@/data/experience";
+import { skillCategories } from "@/data/skills";
 
 const Page = () => {
   return (
-    <div className={"container max-w-screen-2xl"}>
-      <div className="flex flex-col gap-8 pb-8 md:gap-16 md:pb-16 xl:pb-24">
-        <Intro />
-        <div className="mx-auto mt-12 w-full max-w-5xl shadow-md sm:mt-0">
-          <h2 className="mb-4 text-center text-2xl font-bold text-white duration-150 2xl:text-3xl">
-            About Me 🧑‍💻
-          </h2>
-          <div className="mb-4 flex flex-col items-center gap-4 text-sm text-gray-400 duration-150 sm:text-base 2xl:text-lg">
+    <>
+      <HomeHero />
+
+      <FadeInView as="section" id="about" className="container max-w-screen-2xl py-16 sm:py-20">
+        <SectionHeader
+          label="About"
+          title="A bit about me"
+          description="The short version of how I got here and what I care about when I'm writing code."
+        />
+        <div className="grid gap-8 lg:grid-cols-3">
+          <div className="space-y-4 text-muted-foreground lg:col-span-2">
             <p>
-              Greetings! I&apos;m Ashfaq (<b>Ash</b>), a coding enthusiast with a sprinkle of
-              quirkiness. I hold a Bachelor&apos;s degree in Computer Science and Engineering and
-              have a knack for coding spells. I have dived deep into the mystical realms of web
-              development, backend sorcery, cloud computing, and everything in between.
+              I&apos;m Ashfaq — most people call me <span className="text-foreground">Ash</span>.
+              I&apos;ve been building on the web for a little over six years, and I still get the
+              same kick out of shipping something that holds up in production, especially when it
+              saves someone hours of manual work or clears a bug that&apos;s been sitting around for
+              months.
             </p>
             <p>
-              Think of me as a <b>tech wizard</b>, conjuring awe-inspiring digital spells. Just
-              don&apos;t ask me to turn your cat into a programmer (I&apos;m still working on that
-              spell).
+              I picked up coding seriously in college — hackathons, workshops, organizing an AI
+              club, leading a Google Developer Student Club chapter. Smart India Hackathon, NASA
+              Space Apps, DevFest — that&apos;s where I learned how to move fast, ask dumb questions
+              early, and actually finish things with a team. A lot of how I work today came from
+              those years.
             </p>
             <p>
-              When I&apos;m not harnessing the <b>power of code</b>, you might catch me swimming
-              through the latest technologies or exploring the enchanting realms of side projects.
-              I&apos;ve been known to whip up creative concoctions and sprinkle them with my
-              creativity. But fear not, I always make sure my web spells are efficient,
-              user-friendly, and leave a touch of awe in their wake.
+              Right now I&apos;m at Rhythm Healthcare in Hyderabad, building software that
+              clinicians and patients actually rely on. Healthcare has a higher bar: your data model
+              has to be right, migrations can&apos;t take the system down, and &quot;we&apos;ll fix
+              it later&quot; isn&apos;t really an option. That kind of problem-solving is what I
+              enjoy most — AI triage pipelines, large billing migrations, front-end rebuilds,
+              whatever moves the product forward.
             </p>
             <p>
-              I wielded my keyboard like a <b>magic wand</b>, leading a team of talented developers
-              at Ezerka. Together, we conjured up various projects using different tech stacks. In
-              addition to that, I have gained valuable experience at Cognizant and Rubicon.
+              Before Rhythm, I co-founded Ezerka and spent two years leading a small engineering
+              team — client calls, architecture, reviews, deployments, all of it. Before that,
+              Cognizant (Verizon&apos;s email platform) and Rubicon Red (logistics dashboards)
+              taught me what long-lived enterprise codebases look like and how to improve them
+              without breaking what already works.
             </p>
             <p>
-              With my <b>full-stack expertise</b> and a <b>pinch of quirkiness</b>, I&apos;m always
-              up for magical challenges and ready to create web wonders with my fellow wizards!
+              I try to write code the next person can follow, document decisions while they&apos;re
+              still fresh, and be straight about timelines. If you&apos;re hiring, exploring a
+              collaboration, or just want to talk through a technical problem — feel free to reach
+              out.
             </p>
           </div>
+          <div className="rounded-xl border border-border/60 bg-card/50 p-6">
+            <h3 className="mb-4 font-semibold">Education</h3>
+            <p className="font-medium">{education.degree}</p>
+            <p className="text-sm text-muted-foreground">{education.school}</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {education.period} · {education.location}
+            </p>
+            <p className="mt-2 font-mono text-sm text-emerald-400">CGPA: {education.cgpa}</p>
+
+            <h3 className="mb-3 mt-6 font-semibold">Highlights</h3>
+            <ul className="space-y-2">
+              {achievements.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-2 text-sm text-muted-foreground before:mt-2 before:h-1 before:w-1 before:shrink-0 before:rounded-full before:bg-emerald-500"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
-    </div>
+      </FadeInView>
+
+      <section id="experience" className="border-y border-border/40 bg-card/30 py-16 sm:py-20">
+        <div className="container max-w-screen-2xl">
+          <FadeInView>
+            <SectionHeader
+              label="Experience"
+              title="Where I've worked"
+              description="A track record of shipping production systems, leading teams, and improving how software gets built."
+            />
+          </FadeInView>
+          <ExperienceTimeline items={experience} />
+        </div>
+      </section>
+
+      <FadeInView as="section" id="skills" className="container max-w-screen-2xl py-16 sm:py-20">
+        <SectionHeader
+          label="Skills"
+          title="Tools & technologies"
+          description="Technologies I use daily to build, test, deploy, and maintain production applications."
+        />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {skillCategories.map((category) => (
+            <div
+              key={category.title}
+              className="rounded-xl border border-border/60 bg-card/50 p-5 transition-colors hover:border-emerald-500/20"
+            >
+              <h3 className="mb-3 font-mono text-sm font-semibold text-emerald-400">
+                {category.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <Badge key={skill} variant="outline">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </FadeInView>
+
+      <section id="contact" className="border-t border-border/40 bg-card/30 py-16 sm:py-20">
+        <div className="container max-w-screen-2xl">
+          <FadeInView className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionHeader
+                label="Contact"
+                title="Let's connect"
+                description="Whether you're hiring, collaborating, or just want to say hello — I'd love to hear from you."
+              />
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  <span className="font-medium text-foreground">Email:</span>{" "}
+                  <Link
+                    href="mailto:ashfaqnisar00@gmail.com"
+                    className="text-emerald-400 hover:underline"
+                  >
+                    ashfaqnisar00@gmail.com
+                  </Link>
+                </p>
+                <p>
+                  <span className="font-medium text-foreground">Phone:</span> +91-8328277518
+                </p>
+                <p>
+                  <span className="font-medium text-foreground">Location:</span> Hyderabad, India
+                </p>
+                <p className="text-sm">
+                  Recruiters and hiring managers — my resume is always up to date. Feel free to
+                  reach out directly or use the form.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-xl border border-border/60 bg-card/50 p-6 sm:p-8">
+              <ContactForm />
+            </div>
+          </FadeInView>
+        </div>
+      </section>
+    </>
   );
 };
 

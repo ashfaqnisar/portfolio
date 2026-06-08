@@ -1,50 +1,53 @@
-import { Fragment } from "react";
-import Link from "next/link";
+"use client";
 
-import { AiFillGithub } from "react-icons/ai";
+import { motion, useReducedMotion } from "framer-motion";
+
+import { Badge } from "@/components/ui/badge";
+import { defaultTransition, fadeInUp, viewportOnce } from "@/lib/motion";
+import { cn } from "@/lib/utils";
+
+import type { Project } from "@/data/projects";
 
 const ProjectCard = ({
-  project: { name, description, tags, repo }
+  project: { name, description, tags },
+  featured = false,
+  index = 0
 }: {
-  project: {
-    id: string;
-    name: string;
-    description: string;
-    tags: string[];
-    repo?: string;
-    image?: string;
-    website?: string;
-  };
+  project: Project;
+  featured?: boolean;
+  index?: number;
 }) => {
-  const renderTags = () => {
-    return tags.map((tag: string, index) => (
-      <Fragment key={tag}>
-        <span className="text-xs font-medium capitalize text-gray-400 2xl:text-sm">{tag}</span>
-        {index !== tags.length - 1 && <span className="text-xs font-semibold 2xl:text-sm">|</span>}
-      </Fragment>
-    ));
-  };
+  const reduceMotion = useReducedMotion();
 
   return (
-    <div className="group space-y-3 rounded-xl p-4 ring-1 ring-zinc-100/10 duration-150 hover:bg-neutral-900/25 hover:ring-zinc-100/30">
-      <div>
-        <h3 className="text-sm font-semibold duration-150 sm:text-base 2xl:text-lg">{name}</h3>
-        <p className="text-xs font-normal text-gray-400 duration-150 sm:text-sm 2xl:text-base">
-          {description}
-        </p>
-      </div>
-      <div className="flex flex-row flex-wrap gap-2">{renderTags()}</div>
-      {repo && (
-        <Link
-          href={repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex flex-row items-center gap-2 rounded px-2 py-1 text-xs font-semibold text-gray-300 ring-1 ring-zinc-400 duration-150 hover:bg-zinc-900 hover:text-white hover:ring-zinc-300 2xl:text-sm">
-          <AiFillGithub size={18} />
-          <span>Repo</span>
-        </Link>
+    <motion.article
+      className={cn(
+        "group flex h-full flex-col rounded-xl border border-border/60 bg-card/50 p-5 transition-colors duration-200 hover:border-emerald-500/30 hover:bg-card/80 sm:p-6",
+        featured && "ring-1 ring-emerald-500/20"
       )}
-    </div>
+      initial={reduceMotion ? false : "hidden"}
+      whileInView="visible"
+      viewport={viewportOnce}
+      variants={fadeInUp}
+      transition={{ ...defaultTransition, delay: (index % 6) * 0.05 }}
+      whileHover={reduceMotion ? undefined : { y: -4 }}
+    >
+      <div className="flex-1 space-y-3">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-base font-semibold sm:text-lg">{name}</h3>
+          {featured && <Badge variant="accent">Featured</Badge>}
+        </div>
+        <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <Badge key={tag} variant="outline">
+            {tag}
+          </Badge>
+        ))}
+      </div>
+    </motion.article>
   );
 };
 

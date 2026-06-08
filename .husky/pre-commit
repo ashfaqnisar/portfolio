@@ -1,1 +1,2 @@
-npx pretty-quick --staged
+bunx oxfmt --check
+bunx oxlint src
