@@ -30,7 +30,7 @@ export function ExperienceTimeline({ items }: { items: Experience[] }) {
             <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h3 className="text-lg font-semibold">{job.role}</h3>
-                <p className="font-medium text-brand-light">{job.company}</p>
+                <p className="font-medium text-brand">{job.company}</p>
               </div>
               <div className="text-sm text-muted-foreground">
                 <p>{job.period}</p>
