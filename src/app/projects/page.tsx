@@ -17,7 +17,7 @@ const Page = () => {
       <SectionHeader
         label="Projects"
         title="Things I've built"
-        description="A selection of production systems, client deliverables, and side projects spanning healthcare, fintech, education, and IoT."
+        description="Production systems, client work, and side projects—from port-scale fintech and healthcare OCR to campus tools and hackathon builds."
       />
 
       {featured.length > 0 && (

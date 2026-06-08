@@ -36,7 +36,7 @@ export const pageMeta = {
   projects: {
     title: "Projects",
     description:
-      "Selected projects by Ashfaq Nisar — full-stack applications, OCR systems, invoice reconciliation, ERP, and IoT platforms.",
+      "Production systems and side projects by Ashfaq Nisar—invoice reconciliation, healthcare OCR, order management, ERP, IoT, and more.",
     path: "/projects"
   },
   gallery: {

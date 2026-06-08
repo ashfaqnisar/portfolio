@@ -13,7 +13,7 @@ export const projects: Project[] = [
     id: "adani",
     name: "Adani Ports Invoice Reconciliation",
     description:
-      "Per-invoice virtual account mapping with PostgreSQL and Razorpay for automated reconciliation. Admin dashboard with audit logging, immutable transaction history, and Dockerized deployments—cutting manual validation by 50%.",
+      "Payment reconciliation platform for Adani Ports—each invoice gets a dedicated virtual account, with Razorpay webhooks writing into PostgreSQL and an admin dashboard for audit logs and immutable transaction history. Dockerized deployments; cut manual payment validation by about 50%.",
     tags: ["React", "Fastify", "PostgreSQL", "Razorpay", "Docker"],
     featured: true
   },
@@ -21,7 +21,7 @@ export const projects: Project[] = [
     id: "esocr",
     name: "Exact Sciences OCR (ESOCR)",
     description:
-      "COTS OCR solution extracting data from handwritten and system-generated patient forms. Next.js front end with real-time field validation, synthetic training data generation, and 40% accuracy improvement.",
+      "OCR pipeline for patient intake forms at Exact Sciences—handwritten and printed fields, validated in a Next.js UI as data is extracted. Built synthetic training sets to improve the Nanonets model and raised field-level accuracy by 40% on the hardest handwriting samples.",
     repo: "https://github.com/ashfaqnisar/ESOCR",
     website: "https://esocr.vercel.app/",
     tags: ["Next.js", "Express", "Nanonets", "Firebase", "OCR"],
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     id: "order_management_system",
     name: "Order Management System",
     description:
-      "Centralized platform for managing customers, vendors, products, orders, and inventory—streamlining operations and improving visibility across the supply chain.",
+      "Operations hub for customers, vendors, products, orders, and inventory—one GraphQL API on Express/MongoDB instead of scattered spreadsheets. React dashboard gives teams live stock and fulfillment visibility across the supply chain.",
     tags: ["React", "GraphQL", "Express", "MongoDB", "TypeScript"],
     featured: true
   },
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     id: "return_order_system",
     name: "Return Order Management System",
     description:
-      "Microservices-based system for returning defective or damaged goods, built for performance and scalability with Spring Boot.",
+      "Spring Boot microservices for return authorization, inspection, and restock when goods arrive damaged or defective. Split into focused services with Thymeleaf admin views—built to handle volume without a monolithic bottleneck.",
     repo: "https://github.com/ashfaqnisar/Return-Order-Management-System",
     tags: ["Java", "Spring Boot", "Maven", "Thymeleaf", "Microservices"]
   },
@@ -47,14 +47,14 @@ export const projects: Project[] = [
     id: "college_erp",
     name: "College ERP",
     description:
-      "Enterprise resource planning for 1,000+ students, faculty, and staff with examination scheduling and academic management features.",
+      "Campus ERP for 1,000+ students, faculty, and staff—admissions, academic records, examination scheduling, and role-based access. React front end with Firebase Functions and Firestore handling enrollment workflows and notifications.",
     tags: ["React", "Firestore", "Firebase Functions", "Express"]
   },
   {
     id: "dsc_vjit",
     name: "DSC VJIT Community Site",
     description:
-      "Dynamic website for the Developer Student Club integrated with the GDG Aura Community Dashboard for workshops, teams, and event pages.",
+      "Public site for VJIT's Developer Student Club—workshops, team pages, and event listings students could actually find. Integrated with the GDG Aura community dashboard so organizers could update content without redeploying the site.",
     repo: "https://github.com/ashfaqnisar/dsc-vjit-website",
     tags: ["Next.js", "Firestore", "Vue.js"]
   },
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: "enimo",
     name: "Enimo — Energy Monitoring",
     description:
-      "IoT energy monitoring system with real-time appliance consumption tracking and intuitive chart visualizations.",
+      "IoT energy monitor that streams per-appliance consumption into Firebase via Pub/Sub. React dashboard charts usage in real time so households can compare device draw and spot waste before the bill arrives.",
     repo: "https://github.com/ashfaqnisar/enimo",
     tags: ["React", "IoT", "Firebase", "Pub/Sub"]
   },
@@ -70,15 +70,14 @@ export const projects: Project[] = [
     id: "mars_habitat",
     name: "Mars Habitat Environment",
     description:
-      "Immersive game environment simulating Mars colonization—winner of NASA Space Apps Challenge 2018 among 85 teams.",
+      "Unreal Engine walkthrough simulating life-support tradeoffs in a Mars colony—resource loops, habitat layout, and environmental constraints. Won NASA Space Apps Challenge Hyderabad 2018 out of 85 teams.",
     tags: ["Unreal Engine", "C#", "Game Dev"]
   },
   {
     id: "kiosk",
     name: "KIOSK Wastage Recycler",
     description:
-      "Java CLI application for managing and monitoring various wastage types through an intuitive command-line interface.",
-    repo: "https://github.com/ashfaqnisar/Return-Order-Management-System",
+      "Java CLI for campus kiosk drop-off points—operators log waste type, weight, and category from the terminal. Built as lightweight tooling for a sustainability pilot where tracking intake mattered more than a full web app.",
     tags: ["Java", "Maven"]
   }
 ];

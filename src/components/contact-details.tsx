@@ -9,7 +9,11 @@ type ContactDetailsProps = {
   compact?: boolean;
 };
 
-export function ContactDetails({ className, showNote = false, compact = false }: ContactDetailsProps) {
+export function ContactDetails({
+  className,
+  showNote = false,
+  compact = false
+}: ContactDetailsProps) {
   return (
     <div className={cn("space-y-4 text-muted-foreground", className)}>
       <p className={compact ? "text-sm" : undefined}>
