@@ -50,7 +50,7 @@ export function HomeHero() {
 
   return (
     <section className="hero-glow relative overflow-hidden border-b border-border/40">
-      <div className="container max-w-screen-2xl py-16 sm:py-24 lg:py-28">
+      <div className="container max-w-(--breakpoint-2xl) py-16 sm:py-24 lg:py-28">
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
           <motion.div
             className="flex max-w-2xl flex-col gap-6 text-center lg:text-left"
@@ -64,7 +64,7 @@ export function HomeHero() {
               </p>
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 Hi, I&apos;m{" "}
-                <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
                   Ashfaq Nisar
                 </span>
               </h1>

@@ -32,15 +32,15 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
       transition={{ ...defaultTransition, delay: (index % 8) * 0.04 }}
       whileHover={reduceMotion ? undefined : { y: -4 }}
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-4/3 overflow-hidden">
         <Image
           src={images[0]!}
           alt={event.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover grayscale-[30%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+          className="object-cover grayscale-30 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         {tag && (
           <div className="absolute right-3 top-3">
             <Badge variant="accent">{tag}</Badge>

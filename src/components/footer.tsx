@@ -4,7 +4,7 @@ import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 export function Footer() {
   return (
     <footer className="border-t border-border/60 py-8">
-      <div className="container flex max-w-screen-2xl flex-col items-center justify-between gap-4 sm:flex-row">
+      <div className="container flex max-w-(--breakpoint-2xl) flex-col items-center justify-between gap-4 sm:flex-row">
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} Ashfaq Nisar. Built with Next.js & Tailwind.
         </p>

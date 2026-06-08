@@ -170,7 +170,7 @@ const events = [
 
 const Page = () => {
   return (
-    <div className="container max-w-screen-2xl py-12 sm:py-16">
+    <div className="container max-w-(--breakpoint-2xl) py-12 sm:py-16">
       <FadeInView>
         <SectionHeader
           label="Gallery"

@@ -14,7 +14,11 @@ const Page = () => {
     <>
       <HomeHero />
 
-      <FadeInView as="section" id="about" className="container max-w-screen-2xl py-16 sm:py-20">
+      <FadeInView
+        as="section"
+        id="about"
+        className="container max-w-(--breakpoint-2xl) py-16 sm:py-20"
+      >
         <SectionHeader
           label="About"
           title="A bit about me"
@@ -83,7 +87,7 @@ const Page = () => {
       </FadeInView>
 
       <section id="experience" className="border-y border-border/40 bg-card/30 py-16 sm:py-20">
-        <div className="container max-w-screen-2xl">
+        <div className="container max-w-(--breakpoint-2xl)">
           <FadeInView>
             <SectionHeader
               label="Experience"
@@ -95,7 +99,11 @@ const Page = () => {
         </div>
       </section>
 
-      <FadeInView as="section" id="skills" className="container max-w-screen-2xl py-16 sm:py-20">
+      <FadeInView
+        as="section"
+        id="skills"
+        className="container max-w-(--breakpoint-2xl) py-16 sm:py-20"
+      >
         <SectionHeader
           label="Skills"
           title="Tools & technologies"
@@ -123,7 +131,7 @@ const Page = () => {
       </FadeInView>
 
       <section id="contact" className="border-t border-border/40 bg-card/30 py-16 sm:py-20">
-        <div className="container max-w-screen-2xl">
+        <div className="container max-w-(--breakpoint-2xl)">
           <FadeInView className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
               <SectionHeader

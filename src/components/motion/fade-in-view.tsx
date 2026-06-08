@@ -13,13 +13,7 @@ interface FadeInViewProps {
   as?: "div" | "section" | "article";
 }
 
-export function FadeInView({
-  children,
-  className,
-  delay = 0,
-  id,
-  as = "div"
-}: FadeInViewProps) {
+export function FadeInView({ children, className, delay = 0, id, as = "div" }: FadeInViewProps) {
   const reduceMotion = useReducedMotion();
   const Component = motion[as];
 

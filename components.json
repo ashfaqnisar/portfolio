@@ -4,14 +4,15 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
+    "config": "",
     "css": "src/app/globals.css",
     "baseColor": "gray",
     "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
-    "components": "@/shared/shadcn",
-    "utils": "@/lib/utils"
+    "components": "@/components/ui",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui"
   }
 }

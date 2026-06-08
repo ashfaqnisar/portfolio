@@ -20,7 +20,7 @@ const Topbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="container max-w-screen-2xl">
+      <div className="container max-w-(--breakpoint-2xl)">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"

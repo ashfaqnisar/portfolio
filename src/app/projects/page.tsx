@@ -13,7 +13,7 @@ const Page = () => {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <div className="container max-w-screen-2xl py-12 sm:py-16">
+    <div className="container max-w-(--breakpoint-2xl) py-12 sm:py-16">
       <SectionHeader
         label="Projects"
         title="Things I've built"
