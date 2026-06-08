@@ -8,7 +8,7 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-emerald-500 text-emerald-950 hover:bg-emerald-400 shadow-lg shadow-emerald-500/20 ring-1 ring-emerald-400/30",
+    "bg-brand text-brand-dark hover:bg-brand-light shadow-lg shadow-brand/20 ring-1 ring-brand-light/30",
   secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 ring-1 ring-border",
   ghost: "hover:bg-secondary/50 text-foreground",
   outline:
@@ -23,7 +23,7 @@ const sizes: Record<ButtonSize, string> = {
 
 function buttonClasses(variant: ButtonVariant, size: ButtonSize, className?: string) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className

@@ -13,7 +13,7 @@ export function Footer() {
             href="https://github.com/ashfaqnisar"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors hover:text-emerald-400"
+            className="text-muted-foreground transition-colors hover:text-brand-light"
             aria-label="GitHub"
           >
             <AiOutlineGithub size={20} />
@@ -22,14 +22,14 @@ export function Footer() {
             href="https://www.linkedin.com/in/ashfaqnisar/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors hover:text-emerald-400"
+            className="text-muted-foreground transition-colors hover:text-brand-light"
             aria-label="LinkedIn"
           >
             <AiFillLinkedin size={20} />
           </Link>
           <Link
             href="mailto:ashfaqnisar00@gmail.com"
-            className="text-sm text-muted-foreground transition-colors hover:text-emerald-400"
+            className="text-sm text-muted-foreground transition-colors hover:text-brand-light"
           >
             ashfaqnisar00@gmail.com
           </Link>

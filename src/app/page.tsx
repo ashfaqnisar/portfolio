@@ -69,14 +69,14 @@ const Page = () => {
             <p className="mt-1 text-sm text-muted-foreground">
               {education.period} · {education.location}
             </p>
-            <p className="mt-2 font-mono text-sm text-emerald-400">CGPA: {education.cgpa}</p>
+            <p className="mt-2 font-mono text-sm text-brand-light">CGPA: {education.cgpa}</p>
 
             <h3 className="mb-3 mt-6 font-semibold">Highlights</h3>
             <ul className="space-y-2">
               {achievements.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-2 text-sm text-muted-foreground before:mt-2 before:h-1 before:w-1 before:shrink-0 before:rounded-full before:bg-emerald-500"
+                  className="flex gap-2 text-sm text-muted-foreground before:mt-2 before:h-1 before:w-1 before:shrink-0 before:rounded-full before:bg-brand"
                 >
                   {item}
                 </li>
@@ -113,9 +113,9 @@ const Page = () => {
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="rounded-xl border border-border/60 bg-card/50 p-5 transition-colors hover:border-emerald-500/20"
+              className="rounded-xl border border-border/60 bg-card/50 p-5 transition-colors hover:border-brand/20"
             >
-              <h3 className="mb-3 font-mono text-sm font-semibold text-emerald-400">
+              <h3 className="mb-3 font-mono text-sm font-semibold text-brand-light">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -144,7 +144,7 @@ const Page = () => {
                   <span className="font-medium text-foreground">Email:</span>{" "}
                   <Link
                     href="mailto:ashfaqnisar00@gmail.com"
-                    className="text-emerald-400 hover:underline"
+                    className="text-brand-light hover:underline"
                   >
                     ashfaqnisar00@gmail.com
                   </Link>

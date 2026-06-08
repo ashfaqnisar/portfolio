@@ -22,8 +22,8 @@ const ProjectCard = ({
   return (
     <motion.article
       className={cn(
-        "group flex h-full flex-col rounded-xl border border-border/60 bg-card/50 p-5 transition-colors duration-200 hover:border-emerald-500/30 hover:bg-card/80 sm:p-6",
-        featured && "ring-1 ring-emerald-500/20"
+        "group flex h-full flex-col rounded-xl border border-border/60 bg-card/50 p-5 transition-colors duration-200 hover:border-brand/30 hover:bg-card/80 sm:p-6",
+        featured && "ring-1 ring-brand/20"
       )}
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"

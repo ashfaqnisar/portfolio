@@ -24,7 +24,7 @@ export function EventCard({ event, index = 0 }: EventCardProps) {
 
   return (
     <motion.article
-      className="group overflow-hidden rounded-xl border border-border/60 bg-card/50 transition-colors duration-300 hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5"
+      className="group overflow-hidden rounded-xl border border-border/60 bg-card/50 transition-colors duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5"
       initial={reduceMotion ? false : "hidden"}
       whileInView="visible"
       viewport={viewportOnce}

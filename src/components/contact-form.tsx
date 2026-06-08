@@ -102,7 +102,7 @@ export function ContactForm() {
         Send Message
       </SubmitButton>
       {status === "success" && (
-        <p className="text-sm text-emerald-400">
+        <p className="text-sm text-brand-light">
           Opening your email client — feel free to follow up at ashfaqnisar00@gmail.com.
         </p>
       )}

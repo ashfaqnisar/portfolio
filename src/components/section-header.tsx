@@ -17,7 +17,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={cn("mb-8 space-y-2", align === "center" && "text-center", className)}>
-      <p className="font-mono text-sm font-medium uppercase tracking-widest text-emerald-400">
+      <p className="font-mono text-sm font-medium uppercase tracking-widest text-brand-light">
         {label}
       </p>
       <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>

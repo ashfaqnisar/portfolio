@@ -15,7 +15,7 @@ export function LogoMark({ className, size = "md" }: LogoMarkProps) {
   return (
     <span
       className={cn(
-        "flex items-center justify-center rounded-lg bg-emerald-500/10 font-mono font-bold text-emerald-400 ring-1 ring-emerald-500/30",
+        "flex items-center justify-center rounded-lg bg-brand/10 font-mono font-bold text-brand-light ring-1 ring-brand/30",
         sizeClasses[size],
         className
       )}

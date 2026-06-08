@@ -26,7 +26,7 @@ const Topbar: React.FC = () => {
             href="/"
             className="group flex items-center gap-2 font-mono text-lg font-bold tracking-tight"
           >
-            <LogoMark className="transition-colors group-hover:bg-emerald-500/20" />
+            <LogoMark className="transition-colors group-hover:bg-brand/20" />
             <span className="hidden text-foreground sm:inline">Ashfaq Nisar</span>
           </Link>
 
@@ -41,7 +41,7 @@ const Topbar: React.FC = () => {
                     className={cn(
                       "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       pathname === item.href
-                        ? "bg-emerald-500/10 text-emerald-400"
+                        ? "bg-brand/10 text-brand-light"
                         : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     )}
                   >

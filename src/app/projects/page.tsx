@@ -22,7 +22,7 @@ const Page = () => {
 
       {featured.length > 0 && (
         <div className="mb-12">
-          <h3 className="mb-4 font-mono text-sm font-medium uppercase tracking-widest text-emerald-400">
+          <h3 className="mb-4 font-mono text-sm font-medium uppercase tracking-widest text-brand-light">
             Featured
           </h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

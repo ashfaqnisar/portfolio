@@ -41,7 +41,7 @@ export function MobileNav() {
                   className={cn(
                     "block rounded-lg px-3 py-2.5 text-base transition-colors",
                     pathname === item.href
-                      ? "bg-emerald-500/10 font-medium text-emerald-400"
+                      ? "bg-brand/10 font-medium text-brand-light"
                       : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                   )}
                 >

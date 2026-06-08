@@ -59,12 +59,12 @@ export function HomeHero() {
             variants={staggerContainer}
           >
             <motion.div className="space-y-4" variants={fadeInUp} transition={defaultTransition}>
-              <p className="font-mono text-sm font-medium uppercase tracking-widest text-emerald-400">
+              <p className="font-mono text-sm font-medium uppercase tracking-widest text-brand-light">
                 Full Stack Developer
               </p>
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
                 Hi, I&apos;m{" "}
-                <span className="bg-linear-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-brand-light to-brand-teal bg-clip-text text-transparent">
                   Ashfaq Nisar
                 </span>
               </h1>
@@ -80,7 +80,7 @@ export function HomeHero() {
               variants={fadeInUp}
               transition={defaultTransition}
             >
-              <MapPin size={16} className="text-emerald-400" />
+              <MapPin size={16} className="text-brand-light" />
               <span>Hyderabad, India · Open to remote opportunities</span>
             </motion.div>
 
@@ -120,7 +120,7 @@ export function HomeHero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.name}
-                  className="text-muted-foreground transition-colors hover:text-emerald-400"
+                  className="text-muted-foreground transition-colors hover:text-brand-light"
                 >
                   {cloneElement(item.icon, {
                     size: 22,
@@ -138,8 +138,8 @@ export function HomeHero() {
             variants={scaleIn}
             transition={{ ...defaultTransition, delay: 0.15 }}
           >
-            <div className="absolute -inset-4 rounded-full bg-emerald-500/20 blur-3xl" />
-            <div className="relative overflow-hidden rounded-2xl ring-2 ring-emerald-500/30 ring-offset-4 ring-offset-background">
+            <div className="absolute -inset-4 rounded-full bg-brand/20 blur-3xl" />
+            <div className="relative overflow-hidden rounded-2xl ring-2 ring-brand/30 ring-offset-4 ring-offset-background">
               <Image
                 className="h-56 w-56 object-cover sm:h-64 sm:w-64 lg:h-72 lg:w-72"
                 src="/images/profile.png"
