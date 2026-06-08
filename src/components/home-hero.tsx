@@ -18,6 +18,7 @@ import { SiCodersrank, SiLeetcode } from "react-icons/si";
 import { DevArena } from "@/components/interactive/dev-arena";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { site } from "@/data/site";
 import { defaultTransition, fadeInUp, scaleIn, staggerContainer } from "@/lib/motion";
 
 import type { ReactElement } from "react";
@@ -100,11 +101,11 @@ export function HomeHero() {
               variants={fadeInUp}
               transition={defaultTransition}
             >
-              <Button href="/Ashfaq_Resume.pdf" target="_blank" size="lg">
+              <Button href={site.resume} target="_blank" size="lg">
                 View Resume
                 <ArrowRight size={16} />
               </Button>
-              <Button href="mailto:ashfaqnisar00@gmail.com" variant="outline" size="lg">
+              <Button href="#contact" variant="outline" size="lg">
                 Get in Touch
               </Button>
             </motion.div>

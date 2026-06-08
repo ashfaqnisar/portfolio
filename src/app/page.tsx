@@ -1,6 +1,4 @@
-import Link from "next/link";
-
-import { ContactForm } from "@/components/contact-form";
+import { ContactDetails } from "@/components/contact-details";
 import { ExperienceTimeline } from "@/components/experience-timeline";
 import { HomeHero } from "@/components/home-hero";
 import { FadeInView } from "@/components/motion/fade-in-view";
@@ -131,38 +129,13 @@ const Page = () => {
 
       <section id="contact" className="border-t border-border/40 bg-card/30 py-16 sm:py-20">
         <div className="container max-w-(--breakpoint-2xl)">
-          <FadeInView className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <SectionHeader
-                label="Contact"
-                title="Let's connect"
-                description="Whether you're hiring, collaborating, or just want to say hello — I'd love to hear from you."
-              />
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  <span className="font-medium text-foreground">Email:</span>{" "}
-                  <Link
-                    href="mailto:ashfaqnisar00@gmail.com"
-                    className="text-brand-light hover:underline"
-                  >
-                    ashfaqnisar00@gmail.com
-                  </Link>
-                </p>
-                <p>
-                  <span className="font-medium text-foreground">Phone:</span> +91-8328277518
-                </p>
-                <p>
-                  <span className="font-medium text-foreground">Location:</span> Hyderabad, India
-                </p>
-                <p className="text-sm">
-                  Recruiters and hiring managers — my resume is always up to date. Feel free to
-                  reach out directly or use the form.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-xl border border-border/60 bg-card/50 p-6 sm:p-8">
-              <ContactForm />
-            </div>
+          <FadeInView className="max-w-2xl">
+            <SectionHeader
+              label="Contact"
+              title="Let's connect"
+              description="Whether you're hiring, collaborating, or just want to say hello — I'd love to hear from you."
+            />
+            <ContactDetails showNote />
           </FadeInView>
         </div>
       </section>
