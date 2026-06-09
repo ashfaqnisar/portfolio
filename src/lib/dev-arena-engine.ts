@@ -105,7 +105,8 @@ const DEPLOY_POINTS = 50;
 const TIME_BONUS_PER_SECOND = 2;
 const START_LIVES = 3;
 const INVINCIBLE_MS = 1400;
-const PADDING = 28;
+const EDGE_INSET = PLAYER_RADIUS;
+const BADGE_INSET = 6;
 const MAX_BUGS_VISIBLE = 6;
 
 export const HIGH_SCORE_KEY = "ship-sprint-high-score";
@@ -237,33 +238,29 @@ function isValidBugSpawn(point: Vec2, state: DevArenaState, ignoreBugId?: number
 }
 
 function getMovementBounds(state: DevArenaState) {
-  const top = PADDING + 26;
-
   return {
-    left: PADDING,
-    right: state.width - PADDING,
-    top,
-    bottom: state.height - PADDING
+    left: EDGE_INSET,
+    right: state.width - EDGE_INSET,
+    top: EDGE_INSET,
+    bottom: state.height - EDGE_INSET
   };
 }
 
 function getPlayableBounds(state: DevArenaState) {
-  const top = PADDING + 26;
-
   if (state.portrait) {
     return {
-      left: PADDING,
-      right: state.width - PADDING,
-      top,
-      bottom: state.deployZone.y - PADDING
+      left: EDGE_INSET,
+      right: state.width - EDGE_INSET,
+      top: EDGE_INSET,
+      bottom: state.deployZone.y - EDGE_INSET
     };
   }
 
   return {
-    left: PADDING,
-    right: state.deployZone.x - PADDING,
-    top,
-    bottom: state.height - PADDING
+    left: EDGE_INSET,
+    right: state.deployZone.x - EDGE_INSET,
+    top: EDGE_INSET,
+    bottom: state.height - EDGE_INSET
   };
 }
 
@@ -356,44 +353,43 @@ function resolveCircleRect(x: number, y: number, radius: number, rect: Obstacle)
 function createLayout(width: number, height: number, level: number) {
   const config = getLevelConfig(level);
   const portrait = height > width;
-  const fieldScale = portrait ? 0.78 : 1;
+
+  let deployZone: DeployZone;
+  let field: { x: number; y: number; w: number; h: number };
+
+  if (portrait) {
+    const deployBand = Math.min(52, Math.max(40, height * 0.1));
+    deployZone = { x: 0, y: height - deployBand, w: width, h: deployBand };
+    field = { x: 0, y: 0, w: width, h: height - deployBand };
+  } else {
+    const deployWidth = Math.min(52, Math.max(44, width * 0.12));
+    deployZone = { x: width - deployWidth, y: 0, w: deployWidth, h: height };
+    field = { x: 0, y: 0, w: width - deployWidth, h: height };
+  }
+
+  const playable = {
+    x: field.x + EDGE_INSET,
+    y: field.y + EDGE_INSET,
+    w: Math.max(80, field.w - EDGE_INSET * 2),
+    h: Math.max(80, field.h - EDGE_INSET * 2)
+  };
 
   const obstacles: Obstacle[] = config.obstacles.map((template) => ({
-    x: width * template.x,
-    y: height * template.y * fieldScale,
-    w: Math.max(52, width * template.w, template.label.length * 6.2),
-    h: Math.max(22, height * template.h * fieldScale),
+    x: playable.x + playable.w * template.x,
+    y: playable.y + playable.h * template.y,
+    w: Math.max(48, playable.w * template.w, template.label.length * 6),
+    h: Math.max(20, playable.h * template.h),
     label: template.label
   }));
 
   const hazards: Hazard[] = config.hazards.map((template) => ({
-    x: width * template.x,
-    y: height * template.y * fieldScale,
+    x: playable.x + playable.w * template.x,
+    y: playable.y + playable.h * template.y,
     vx: template.vx * config.hazardSpeed,
     vy: template.vy * config.hazardSpeed,
     radius: template.radius,
     label: template.label
   }));
-
-  let deployZone: DeployZone;
-
-  if (portrait) {
-    const deployBand = Math.min(54, Math.max(44, height * 0.11));
-    deployZone = {
-      x: PADDING,
-      y: height - PADDING - deployBand,
-      w: width - PADDING * 2,
-      h: deployBand
-    };
-  } else {
-    const deployWidth = Math.min(56, width * 0.14);
-    deployZone = {
-      x: width - deployWidth,
-      y: PADDING,
-      w: deployWidth,
-      h: height - PADDING * 2
-    };
-  }
 
   return { obstacles, hazards, deployZone, config, portrait };
 }
@@ -478,7 +474,7 @@ function findSafePlayerSpawn(state: DevArenaState): Vec2 {
     }
   }
 
-  return { x: PADDING + PLAYER_RADIUS, y: state.height * 0.5 };
+  return { x: EDGE_INSET, y: state.height * 0.5 };
 }
 
 function resetLevelProgress(state: DevArenaState) {
@@ -838,6 +834,7 @@ type DrawColors = {
   bugLabel: string;
   hazard: string;
   hazardGlow: string;
+  hazardLabel: string;
   obstacle: string;
   obstacleText: string;
   deploy: string;
@@ -893,14 +890,14 @@ export function drawDevArena(
 function drawLevelBadge(ctx: CanvasRenderingContext2D, state: DevArenaState, colors: DrawColors) {
   ctx.fillStyle = colors.obstacle;
   ctx.globalAlpha = 0.85;
-  ctx.fillRect(PADDING, PADDING, 92, 22);
+  ctx.fillRect(BADGE_INSET, BADGE_INSET, 92, 22);
   ctx.globalAlpha = 1;
 
   ctx.fillStyle = colors.text;
   ctx.font = "600 10px ui-monospace, SFMono-Regular, Menlo, monospace";
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
-  ctx.fillText(`L${state.level} ${state.levelName}`, PADDING + 8, PADDING + 11);
+  ctx.fillText(`L${state.level} ${state.levelName}`, BADGE_INSET + 8, BADGE_INSET + 11);
 }
 
 function drawDeployZone(
@@ -993,21 +990,41 @@ function drawHazard(
   now: number
 ) {
   const pulse = 1 + Math.sin(now * 0.008) * 0.12;
+  const radius = hazard.radius * pulse;
 
   ctx.beginPath();
-  ctx.arc(hazard.x, hazard.y, hazard.radius * pulse + 4, 0, Math.PI * 2);
+  ctx.arc(hazard.x, hazard.y, radius + 4, 0, Math.PI * 2);
   ctx.fillStyle = colors.hazardGlow;
   ctx.globalAlpha = 0.25;
   ctx.fill();
   ctx.globalAlpha = 1;
 
   ctx.beginPath();
-  ctx.arc(hazard.x, hazard.y, hazard.radius * pulse, 0, Math.PI * 2);
+  ctx.arc(hazard.x, hazard.y, radius, 0, Math.PI * 2);
   ctx.fillStyle = colors.hazard;
   ctx.fill();
 
-  ctx.fillStyle = colors.obstacleText;
-  drawFittedLabel(ctx, hazard.label, hazard.x, hazard.y + 0.5, hazard.radius * 1.7, 7, 5);
+  const labelY = hazard.y + radius + 11;
+  const fontSize =
+    hazard.label.length <= 3 ? 9 : hazard.label.length <= 6 ? 8 : hazard.label.length <= 10 ? 7 : 6;
+
+  ctx.font = `700 ${fontSize}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  const textWidth = ctx.measureText(hazard.label).width;
+  const pillPadX = 5;
+  const pillPadY = 3;
+  const pillW = textWidth + pillPadX * 2;
+  const pillH = fontSize + pillPadY * 2;
+
+  ctx.fillStyle = colors.overlay;
+  ctx.globalAlpha = 0.88;
+  ctx.fillRect(hazard.x - pillW / 2, labelY - pillH / 2, pillW, pillH);
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = colors.hazardLabel;
+  ctx.fillText(hazard.label, hazard.x, labelY);
 }
 
 function drawBug(ctx: CanvasRenderingContext2D, bug: Bug, colors: DrawColors, now: number) {

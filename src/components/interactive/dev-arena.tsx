@@ -35,6 +35,7 @@ function readThemeColors() {
       bugLabel: "oklch(0.985 0 0)",
       hazard: "oklch(0.55 0.18 35)",
       hazardGlow: "oklch(0.637 0.208 25.33)",
+      hazardLabel: "oklch(0.985 0 0)",
       obstacle: "oklch(0.22 0.006 286)",
       obstacleText: "oklch(0.712 0.013 286.07)",
       deploy: "oklch(0.768 0.166 162.19)",
@@ -57,6 +58,7 @@ function readThemeColors() {
     bugLabel: "oklch(0.985 0 0)",
     hazard: "oklch(0.62 0.19 35)",
     hazardGlow: styles.getPropertyValue("--destructive").trim(),
+    hazardLabel: styles.getPropertyValue("--foreground").trim() || "oklch(0.985 0 0)",
     obstacle: styles.getPropertyValue("--secondary").trim(),
     obstacleText: styles.getPropertyValue("--muted-foreground").trim(),
     deploy: styles.getPropertyValue("--brand").trim(),
@@ -407,7 +409,6 @@ export function DevArena() {
           aria-label="Ship Sprint mini-game with five levels. Fix the required bugs, reach production, and avoid outage hazards before the timer runs out."
           role="img"
         />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-8 bg-linear-to-b from-background/40 to-transparent" />
         {hud.phase === "levelComplete" && (
           <div className="absolute inset-0 flex items-end justify-center pb-4">
             <button
